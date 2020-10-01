@@ -42,7 +42,7 @@ export default class App extends Component {
       return res.json();
     }).then((data)=>{
       this.setState({prodInfo: data[0]})
-      console.log(data[0]);
+     
     })
 
   }
@@ -52,22 +52,22 @@ export default class App extends Component {
   }
   render() {
  
-  
+   
     return (
+      <div id={"contain"}>
       <div className={'item-details'}>
       <button type={"submit"} value={"temp"} onClick={this.getOne.bind(this)}>TEMP</button>
         <h2>About this item </h2>
         <div className={"product-tabs"}>
           <div className={"tabs"}>
             <div className={"tab"} onClick={this.clickDetail.bind(this)}>Details</div>
-            <div className={"tab"} onClick={this.clickShip.bind(this)}>Shipping and Returns</div>
+            <div className={"tab"} onClick={this.clickShip.bind(this)}>Shipping & Returns</div>
             <div className={"tab"}  onClick={this.clickQuestion.bind(this)}>Q&A</div>
           </div>
           <hr/>
-         <Detail  class={this.state.detail} product={this.state.prodInfo} />
-         <Shipping  class={this.state.ship} product={this.state.prodInfo}/>
-         <Question  class={this.state.question} product={this.state.prodInfo}/>
         </div>        
+         <Detail  classD={this.state.detail} classS={this.state.ship} classQ={this.state.question}product={this.state.prodInfo} />
+      </div>
       </div>
     );
   }  

@@ -4,7 +4,7 @@ export default class Question extends Component {
     constructor(props) {
       super(props);    
       this.state = { 
-          qna: "",
+          
         
         };     
     }
@@ -21,7 +21,7 @@ export default class Question extends Component {
         
             <div className={this.props.class}>
                 <div id={"questionNAnswer"}>Question and Answers </div>
-                <div id={"qna"}>{this.state.qna}</div>
+                <div id={"qna"}>{this.props.product.qna}</div>
               
   
             </div>
