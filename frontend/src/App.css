@@ -19,7 +19,7 @@
 }
 .tabs{
     height: 100%;
-   
+   color: red;
     display: flex;
     align-items: center;
     justify-content: center;
