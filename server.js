@@ -40,9 +40,13 @@ app.get("/item/:id", cors(), (req, res) => {
 
 app.post("/item/:id", cors(), (req,res) => {
   var id = req.params.id;
-  db.query('INSERT INTO item (name, image, price,prodid, size, material, features,cleaning,shipop,shipdet,shipret,qna,description) 
-  VALUES ($1,$2,$3,$4,$5,$6,$7$8,$9,$10,$11,$12,$13);',
-  [name, image, price,prodid, size, material, features,cleaning,shipop,shipdet,shipret,qna,description],
+  var name= req.params.names;
+  var price = req.params.price;
+
+
+  db.query('INSERT INTO item (name,price) 
+  VALUES ($1,$2, $3);',
+  [ name, price],
   (err,data) => {
     if (err) {
       res.status(500).send('product did not update');
@@ -50,22 +54,22 @@ app.post("/item/:id", cors(), (req,res) => {
       res.json(data.rows);
     }
   });
-});
+})
 
-app.delete("/items/:id", (req,res)=> {
-  const id = Number(req.params.id);
+app.delete("/items/:id", cors(), (req,res)=> {
+  var id = req.params.id;
 
   db.query('DELETE FROM item WHERE ID=$1', [id], (err,data) => {
     if (err) {
-      res.send(err)
+      res.send(err);
     }else {
       res.end('you deleted');
     }
   });
 });
  
-app.put('/item/:id', (req,res) => {
-  var id = Number(req.params.id);
+app.put('/item/:id',cors(), (req,res) => {
+  var id = req.params.id;
 
   db.query('UPDATE item WHERE id = $1',[id], (err,data) =>{
     if (err) {

@@ -6,5 +6,5 @@ const pool = new Pool({
     password: process.env.DATA_PASS,
     port: process.env.DATA_PORT
   
-})
+});
  module.exports = pool;
